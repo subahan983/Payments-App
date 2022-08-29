@@ -1,0 +1,83 @@
+<table style="width:100%; height:100px;">
+    <tr>
+        <td style="padding: 10px;" colspan="2">{{fullDate}} {{isOpen()}}</td>
+        <td style="text-align: center;">Transactions History</td>
+    </tr>
+    <tr>
+        <td style="width:15%; height: 20px;">
+            <h1>Sender</h1>
+        </td>
+        <td>
+            <div class="fS">
+                <input type="text" [(ngModel)]="cId" (ngModelChange)="dispD()" placeholder="Customer ID" > <br>
+                <br>
+                <div *ngIf="visibleS && cName && cId else ndet">
+                    Customer Name: <input type="text" [(ngModel)]="cName" disabled class="pVals"><br><br>
+                    Account Balance: <input type="text" [(ngModel)]="cBal" disabled class="pVals" width="100px"><span *ngIf="cBal<0" style="color: red;"> Overdue</span><br><br>
+                    <button type="button" (click)="sConfirm=true" *ngIf="!sConfirm" class="cnfrm">Confirm</button>
+                </div>
+                <ng-template #ndet>
+                    <span style="color: red;">Enter valid customer id to display customer details.</span>
+                </ng-template>
+            </div>
+        </td>
+        <td rowspan="3" style="width:50%;">
+            <p *ngIf="TransactionsList.length==0" style="text-align: center;">No Transactions has been performed yet.</p>
+            <ol>
+                <li *ngFor="let trns of TransactionsList">{{trns}}</li>
+            </ol>
+        </td>
+    </tr>
+    <tr *ngIf="sConfirm">
+        <td style="width:15%; height: 20px;">
+            <h1>Receiver</h1>
+        </td>
+        <td>
+            <div class="fS">
+                BIC: <input type="text" [(ngModel)]="BICnum" (ngModelChange)="dispBICD()"> <br><br>
+                <div *ngIf="instName && BICnum; else nBICdet">
+                    Institution Name: <input type="text" [(ngModel)]="instName" class="pVals" disabled><br><br>
+                    Account Holder Number: <input type="text" [(ngModel)]="rAccNo" (ngModelChange)="rConfirm=false;dispRecName()"> <br><br>
+                    Account Holder Name: <input type="text" [(ngModel)]="rName" (blur)="ckhSnc()"> <br><br>
+                    <button type="button" (click)="rConfirm=true" *ngIf="!rConfirm && BICnum && rName!='' && rAccNo!=''" class="cnfrm">Confirm</button>
+                </div>
+                <ng-template #nBICdet>
+                    
+                    <span style="color: red;">Enter valid Bank Identification Code.</span>
+                </ng-template>
+            </div>
+        </td>
+    </tr>
+    <tr *ngIf="rConfirm && sConfirm">
+        <td style="width:15%; height: 20px;">
+            <h1>Transaction</h1>
+        </td>
+        <td>
+            <div class="fS">
+                Transfer Type:    
+                    <select #tType (blur)="selTransacType(tType.value)">
+                        <option>1. Bank Transfer</option>
+                        <option>2. Customer Transfer</option>
+                        <option>3. Self Transfer</option>
+                    </select><br><br>
+                Message Code:
+                    <select #msgCode (blur)="msgCsel(msgCode.value)">
+                        <option *ngFor="let msgCod of msgCodes">{{msgCod.message_code}}</option>
+                    </select> <br><br>
+                Amount: <input type="number" [(ngModel)]="amt" (ngModelChange)="amtS()"><span style="color: green;">{{odStmt}}</span><br><br>
+                Transfer fee: <input type="text" [(ngModel)]="transFee" class="pVals" disabled> <br><br>
+                Clear Balance: <input type="text" [(ngModel)]="TcBal" class="pVals" disabled><br><br>
+                <button type="button" (click)="Transed();" *ngIf="amt" class="cnfrm">Confirm</button>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="bg"*ngIf="tConfirm">
+<div class="popup"><br>
+    <img src="https://raw.githubusercontent.com/mibiliyaz/DBS-PaymentsProject/main/imgs/transCmp.png" width="100" height="100" alt="TransactionCompleted"> 
+    <h1>Transaction Completed Successfully</h1>
+    <h3>Thank you for Banking with DBS</h3><br>
+    <a routerLink="." (click)="tConfirm=false;clearr();"><h4 style="color: black; ">DONE</h4></a>
+</div>
+</div>
+<a routerLink="" routerLinkActive="active"><img id="logout" src="https://raw.githubusercontent.com/mibiliyaz/DBS-PaymentsProject/main/imgs/sign-out-icon.png" alt="Logout"></a>

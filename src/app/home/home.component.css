@@ -1,0 +1,70 @@
+.fS{
+    font-family: "Times New Roman", Times, serif;
+    text-align: justify;
+}
+table, th, td {
+    vertical-align: text-top;
+    font-size: 20px;
+    text-align: center;
+}
+td {
+    padding-top: 0px;
+    background-color: #7fcdcd;
+    padding-left: 20px;
+    align-items: center;
+    padding-bottom: 25px;
+    border-radius: 4px;
+    background-image: url(background.jpg);
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid white;
+}
+.pVals {
+    background-color: white;
+    color: green;
+    width: 200px;
+    /* border: 1px solid green; */
+}
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(128, 80, 80, 0.692);
+    top: 0px;
+    left: 0px;
+}
+.popup {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 700px;
+    height: 350px;
+    border: 5px solid green;
+    margin-left: 300px;
+    background-color: white;
+}
+.cnfrm {
+    background-color: greenyellow;
+    border-color: darkgray;
+    /* color: white; */
+}
+#logout {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 40px;
+    width: 40px;
+}
+input {
+    border: 2px solid rgb(19, 15, 15);
+    border-radius: 40px;
+    box-sizing: border-box;
+    align-content: center;
+    
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+}

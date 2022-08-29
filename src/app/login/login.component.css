@@ -1,0 +1,58 @@
+input {
+    
+    width: 25%;
+    padding: 10px;
+    border: 2px solid rgb(19, 15, 15);
+    border-radius: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 415px;
+    margin-bottom: 30px;
+  }
+  /* Style the submit button */
+  button {
+    background-color: green;
+    border: 1px;
+    border-radius: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    width: 15%;
+    margin-left: 440px;
+    margin-right: 10px;
+    align-content: center;
+    
+  }
+  
+  /* Style the container for inputs */
+  .sec1 {
+   
+    padding-top: 0px;
+    text-align: right;
+    background-size:600px;
+    background-repeat: no-repeat;
+    vertical-align: center;
+    height: 100vh;
+    background-color: white;
+    margin-top: 0px;
+    margin-left: 40px;
+    text-align: center;
+    background-image: url("giphy.gif");
+    background-position-y: 0px;
+    
+  }
+  a {
+      margin-left: 450px;
+  }
+  .sec2 {
+      margin-left: 530px;
+      margin-right: 1200px;
+      padding-top: 30px;
+      background-size: 100px;
+      background-repeat: no-repeat;
+      height: 10vh;
+      background-image: url("giphyg.gif");
+  }
